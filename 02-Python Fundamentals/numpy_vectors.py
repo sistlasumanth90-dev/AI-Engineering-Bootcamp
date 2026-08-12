@@ -59,3 +59,21 @@ print("most similar to dog:",most_similar)
 scores = {"A":0.45, "B": 0.96, "C": 0.72}
 print(max(scores,key=scores.get))
 print(max(scores.values()))
+
+candidates = {"puppy": puppy, "cat": cat, "car": car}
+
+for name, vector in candidates.items():
+    similarity = cosine_similarity(dog,vector)
+    print(name, similarity)
+
+    results = {}
+    for name, vector in candidates. items():
+        similarity = cosine_similarity(dog,vector)
+        results[name] = similarity
+    print(results)
+
+    ranked_results = sorted(results.items(), key= lambda item:item[1], reverse = True)
+    print(ranked_results)
+
+    top_2 = ranked_results[:2]
+    print("Top 2:", top_2)
